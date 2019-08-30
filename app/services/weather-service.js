@@ -2,7 +2,7 @@ import Weather from "../models/weather.js";
 
 // @ts-ignore
 const weatherApi = axios.create({
-	baseURL: "//bcw-sandbox.herokuapp.com/api/weather",
+	baseURL: "https://bcw-sandbox.herokuapp.com/api/weather",
 	timeout: 3000
 });
 

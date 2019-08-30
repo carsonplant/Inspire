@@ -1,6 +1,6 @@
 // @ts-ignore
 const _quoteApi = axios.create({
-	baseURL: '//bcw-sandbox.herokuapp.com/api/quotes',
+	baseURL: 'https://bcw-sandbox.herokuapp.com/api/quotes',
 	timeout: 3000
 });
 
