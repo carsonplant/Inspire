@@ -9,6 +9,11 @@ var _weatherService = new WeatherService()
 //TODO Complete rendering data to the screen
 function drawWeather() {
 	console.log("THE WEATHER MAN SAYS:", _weatherService.Weather)
+	let template = ''
+	let current = _weatherService.getWeather()
+	current.forEach(w =>
+		template += _weatherService.Weather)
+	document.getElementById('weather').innerHTML = template
 }
 
 export default class WeatherController {
