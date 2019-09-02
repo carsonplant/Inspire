@@ -29,10 +29,12 @@ export default class WeatherService {
 		_subscribers[prop].push(fn)
 	}
 
-	getWeather() {
+	getApiWeather() {
 		console.log('Calling the Weatherman')
-		weatherApi.get().then(res => {
-			_setState('weather', new Weather(res.data))
-		})
+		weatherApi.get()
+			.then(res => {
+				let weatherData = res.data.data.map(w => new Weather(w))
+				_setState('weather', weatherData)
+			})
 	}
 }

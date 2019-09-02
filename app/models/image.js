@@ -1,4 +1,4 @@
-export default class Image {
+export default class Background {
   constructor(data) {
     this.url = data.url
   }
