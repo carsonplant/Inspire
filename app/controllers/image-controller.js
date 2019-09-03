@@ -4,15 +4,16 @@ const _is = new ImageService()
 
 function _drawImage() {
   let img = _is.Image
-  document.body.style.backgroundImage = ;
+  document.body.style.backgroundImage = "url(${this.url})"
 }
 
 //TODO Create methods for constructor, and rendering the image to the page 
 //      (you may wish to set it as a background image)
 export default class ImageController {
   constructor() {
-    _is.Image()
+    _is.addSubscriber('image', _drawImage)
 
+    _is.getApiImages()
   }
 
 }

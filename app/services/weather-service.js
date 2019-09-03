@@ -7,7 +7,7 @@ const weatherApi = axios.create({
 });
 
 let _state = {
-	weather: {}
+	weather: []
 }
 
 let _subscribers = {
@@ -22,7 +22,7 @@ function _setState(prop, data) {
 
 export default class WeatherService {
 	get Weather() {
-		return _state.weather
+		return _state.weather.map(w => new Weather(w))
 	}
 
 	addSubscriber(prop, fn) {
@@ -33,7 +33,7 @@ export default class WeatherService {
 		console.log('Calling the Weatherman')
 		weatherApi.get()
 			.then(res => {
-				let weatherData = res.data.data.map(w => new Weather(w))
+				let weatherData = res.data.map(w => new Weather(w))
 				_setState('weather', weatherData)
 			})
 	}

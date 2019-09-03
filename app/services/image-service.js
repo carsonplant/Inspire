@@ -34,7 +34,7 @@ export default class ImageService {
 		_imgApi.get()
 			.then(res => {
 				let imgData = res.data.map(i => new Image(i))
-				_setState('cars', imgData)
+				_setState('image', imgData)
 			})
 	}
 }
