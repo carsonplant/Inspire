@@ -8,7 +8,7 @@ const _quoteApi = axios.create({
 });
 
 let _state = {
-	quotes: []
+	quotes: {}
 }
 
 let _subscribers = {
@@ -26,12 +26,12 @@ export default class QuoteService {
 		_subscribers[propName].push(fn)
 	}
 	get Quote() {
-		return _state.quotes.map(q => new Quote(q))
+		return _state.quotes
 	}
 	getApiQuote() {
 		_quoteApi.get()
 			.then(res => {
-				let quoteData = res.data.quote.map(q => new Quote(q))
+				let quoteData = new Quote(res.data.quote)
 				_setState('quotes', quoteData)
 			})
 	}

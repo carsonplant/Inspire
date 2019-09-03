@@ -10,8 +10,7 @@ var _weatherService = new WeatherService()
 function _drawWeather() {
 	console.log("THE WEATHER MAN SAYS:", _weatherService.Weather)
 	let weather = _weatherService.Weather
-	let template = ' '
-	weather.forEach(w => template += w.Template);
+	let template = weather.Template
 	document.getElementById('weather').innerHTML = template
 
 }

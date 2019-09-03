@@ -8,7 +8,7 @@ const _imgApi = axios.create({
 });
 
 let _state = {
-	image: []
+	image: {}
 }
 
 let _subscribers = {
@@ -24,7 +24,7 @@ function _setState(propName, data) {
 export default class ImageService {
 
 	get Image() {
-		return _state.image.map(i => new Image(i))
+		return _state.image
 	}
 
 	addSubscriber(propName, fn) {
@@ -33,7 +33,7 @@ export default class ImageService {
 	getApiImages() {
 		_imgApi.get()
 			.then(res => {
-				let imgData = res.data.map(i => new Image(i))
+				let imgData = new Background(res.data)
 				_setState('image', imgData)
 			})
 	}

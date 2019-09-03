@@ -7,7 +7,7 @@ export default class Quote {
     this.body = data.body
   }
 
-  get Template{
+  get Template() {
 
     return `
     <div class="col"></div>
