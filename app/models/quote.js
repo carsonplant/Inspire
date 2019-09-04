@@ -10,8 +10,8 @@ export default class Quote {
   get Template() {
 
     return `
-      <h1>${this.body}</h1>
-      <h3>-${this.author}</h3>
+      <h4>"${this.body}"</h4>
+      <p>-${this.author}</p>
     `
   }
 }

@@ -31,7 +31,7 @@ export default class QuoteService {
 	getApiQuote() {
 		_quoteApi.get()
 			.then(res => {
-				let quoteData = new Quote(res.data)
+				let quoteData = new Quote(res.data.quote)
 				_setState('quotes', quoteData)
 			})
 	}
