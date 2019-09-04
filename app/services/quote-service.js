@@ -15,15 +15,15 @@ let _subscribers = {
 	quotes: []
 }
 
-function _setState(propName, data) {
-	_state[propName] = data
-	_subscribers[propName].forEach(fn => fn())
+function _setState(prop, data) {
+	_state[prop] = data
+	_subscribers[prop].forEach(fn => fn())
 }
 
 //TODO create methods to retrieve data trigger the update window when it is complete
 export default class QuoteService {
-	addSubscriber(propName, fn) {
-		_subscribers[propName].push(fn)
+	addSubscriber(prop, fn) {
+		_subscribers[prop].push(fn)
 	}
 	get Quote() {
 		return _state.quotes
@@ -31,7 +31,7 @@ export default class QuoteService {
 	getApiQuote() {
 		_quoteApi.get()
 			.then(res => {
-				let quoteData = new Quote(res.data.quote)
+				let quoteData = new Quote(res.data)
 				_setState('quotes', quoteData)
 			})
 	}

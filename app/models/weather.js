@@ -12,7 +12,7 @@ export default class Weather {
     //      check out the other data that comes back and see if there is anything you want to try
 
     this.city = data.name
-    this.kelvin = data.main.temp
+    this.kelvin = Math.floor((data.main.temp - 273.15) * 1.8 + 32)
   }
 
 
@@ -22,7 +22,7 @@ export default class Weather {
         <div class="card">
 					<div class="card-body">
 						<h5 class="card-title">${this.city}</h5>
-						<h6 class="card-subtitle mb-2 text-muted">${this.kelvin}</h6>
+						<h6 class="card-subtitle mb-2 text-muted">${this.kelvin} F</h6>
 					</div>
         </div>
         `

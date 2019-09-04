@@ -11,7 +11,7 @@ function _drawQuote() {
 //      (be sure to review the HTML as an element already was put there for you)
 export default class QuoteController {
   constructor() {
-    _qs.addSubscriber('quote', _drawQuote)
+    _qs.addSubscriber('quotes', _drawQuote)
 
     _qs.getApiQuote()
   }
