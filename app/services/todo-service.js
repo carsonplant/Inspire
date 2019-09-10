@@ -33,17 +33,18 @@ export default class TodoService {
 		console.log("Getting the Todo List")
 		todoApi.get()
 			.then(res => {
-				let todoData = new Todo(res.data)
-				_setState('todo', todoData)
-				//TODO Handle this response from the server
+				let todoData = res.data.data.map(t => new Todo(t))
+				_setState('todos', todoData)
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
 
 	addTodo(todo) {
-		todoApi.post('', todo)
+		let newTodo = new Todo(todo)
+		todoApi.post('', newTodo)
 			.then(res => {
 				//TODO Handle this response from the server (hint: what data comes back, do you want this?)
+				this.getTodos()
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
@@ -53,10 +54,11 @@ export default class TodoService {
 		//TODO Make sure that you found a todo, 
 		//		and if you did find one
 		//		change its completed status to whatever it is not (ex: false => true or true => false)
-
+		todo.completed = !todo.completed
 		todoApi.put(todoId, todo)
 			.then(res => {
 				//TODO do you care about this data? or should you go get something else?
+				this.getTodos()
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
@@ -65,6 +67,20 @@ export default class TodoService {
 		//TODO Work through this one on your own
 		//		what is the request type
 		//		once the response comes back, what do you need to insure happens?
+		todoApi.delete('' + todoId)
+			.then(res => {
+				this.getTodos()
+			})
+			.catch(err => _setState('error', err.response.data))
+	}
+
+	get Todos() {
+		return _state.todos
+	}
+
+
+	insertTodos() {
+		return _state.todos.length
 	}
 
 }

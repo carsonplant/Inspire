@@ -1,10 +1,10 @@
-import Background from "../models/image.js";
+import Image from "../models/image.js";
 
 
 // @ts-ignore
 const _imgApi = axios.create({
 	baseURL: 'https://bcw-sandbox.herokuapp.com/api/images',
-	timeout: 3000
+	timeout: 6000
 });
 
 let _state = {
@@ -15,26 +15,25 @@ let _subscribers = {
 	image: []
 }
 
-function _setState(propName, data) {
-	_state[propName] = data
-	_subscribers[propName].forEach(fn => fn());
+function _setState(prop, data) {
+	_state[prop] = data
+	_subscribers[prop].forEach(fn => fn());
 }
 
 //TODO create methods to retrieve data trigger the update window when it is complete
 export default class ImageService {
+	addSubscriber(prop, fn) {
+		_subscribers[prop].push(fn)
+	}
 
 	get Image() {
 		return _state.image
 	}
 
-	addSubscriber(propName, fn) {
-		_subscribers[propName].push(fn)
-	}
 	getApiImages() {
 		_imgApi.get()
 			.then(res => {
-				let imgData = new Background(res.data)
-				_setState('image', imgData)
+				_setState('image', new Image(res.data))
 			})
 	}
 }

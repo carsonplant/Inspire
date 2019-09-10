@@ -2,3 +2,9 @@
   color: red;
   font-size: 2em;
 }
+
+#bg-image{
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  position: absolute;
+}
