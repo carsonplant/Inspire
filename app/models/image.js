@@ -4,7 +4,7 @@ export default class Background {
   }
   get Template() {
     return `
-    document.body.style.backgroundImage = "${this.url}";
+    document.body.style.backgroundImage = ${this.url};
   `
   }
 

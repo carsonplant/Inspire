@@ -1,5 +1,5 @@
 //NOTE your service is all set up for the observer pattern but there is still work to be done
-
+import Todo from "../models/todo.js";
 // @ts-ignore
 const todoApi = axios.create({
 	baseURL: 'https://bcw-sandbox.herokuapp.com/api/Carson/todos/',
@@ -33,6 +33,8 @@ export default class TodoService {
 		console.log("Getting the Todo List")
 		todoApi.get()
 			.then(res => {
+				let todoData = new Todo(res.data)
+				_setState('todo', todoData)
 				//TODO Handle this response from the server
 			})
 			.catch(err => _setState('error', err.response.data))

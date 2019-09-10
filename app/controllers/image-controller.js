@@ -4,7 +4,7 @@ const _is = new ImageService()
 
 function _drawImage() {
   let img = _is.Image
-  document.body.style.backgroundImage = "url(${this.url})"
+  document.body.style.backgroundImage = "${this.url}"
 }
 
 //TODO Create methods for constructor, and rendering the image to the page 
