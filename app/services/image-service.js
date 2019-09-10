@@ -1,4 +1,4 @@
-import Image from "../models/image.js";
+
 
 
 // @ts-ignore
@@ -33,7 +33,7 @@ export default class ImageService {
 	getApiImages() {
 		_imgApi.get()
 			.then(res => {
-				_setState('image', new Image(res.data))
+				_setState('image', res.data.large_url)
 			})
 	}
 }

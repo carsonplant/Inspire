@@ -13,7 +13,7 @@ export default class Todo {
       return `	<button class="btn btn-danger" id="delete"
 		onclick="app.controllers.todoController.removeTodo('${this._id}')">Delete</button>`
     } else {
-      return `<li onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')">${this.description}</li>`
+      return `<li style="text-shadow: 2px 2px black; color: white" onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')">${this.description}</li>`
     }
   }
 }

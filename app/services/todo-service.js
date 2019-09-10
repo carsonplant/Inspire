@@ -79,7 +79,7 @@ export default class TodoService {
 	}
 
 
-	insertTodos() {
+	numberOfTodos() {
 		return _state.todos.length
 	}
 

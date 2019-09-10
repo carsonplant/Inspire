@@ -3,8 +3,20 @@
   font-size: 2em;
 }
 
-#bg-image{
+html,body{
+  margin: 0;
+  height: 100%;
+
+}
+
+body{
   background-repeat: no-repeat;
   background-size: 100% auto;
-  position: absolute;
+  background-position: center;
+  overflow: hidden;
+}
+
+.overflow{
+  overflow: hidden;
+  padding-right: 0px
 }

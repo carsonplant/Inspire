@@ -12,7 +12,7 @@ function _drawTodos() {
 	document.getElementById("todos").innerHTML = template
 	document.getElementById("todo-create").innerHTML = ` 
 				<form onsubmit="app.controllers.todoController.addTodo(event)">
-				<input name="description" type="text" class="form-control" placeholder="${_todoService.insertTodos()} List">
+				<input name="description" type="text" class="form-control" placeholder="${_todoService.numberOfTodos()} Todos">
 				<button class="btn btn-success" type="submit">Add Todo</button>
 				</form>	
 	`
